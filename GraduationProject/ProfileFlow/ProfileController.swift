@@ -7,9 +7,12 @@
 
 import Foundation
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class ProfileController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var surnameTextField: UITextField!
@@ -36,6 +39,8 @@ class ProfileController: UIViewController {
         nameTextField.isUserInteractionEnabled = true
         surnameTextField.isUserInteractionEnabled = true
         bioTextView.isUserInteractionEnabled = true
+        editButton.isHidden = true
+        saveButton.isHidden = false
     }
     
     @IBAction func saveMode(_ sender: UIButton) {
@@ -43,11 +48,13 @@ class ProfileController: UIViewController {
         nameTextField.isUserInteractionEnabled = false
         surnameTextField.isUserInteractionEnabled = false
         bioTextView.isUserInteractionEnabled = false
+        editButton.isHidden = false
+        saveButton.isHidden = true
     }
     
     
     @IBAction func logOutTapped(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "", message: "Are you sure you want to Log out?", preferredStyle: .alert)
+/*        let alert = UIAlertController(title: "", message: "Are you sure you want to Log out?", preferredStyle: .alert)
         let cancelButton = UIAlertAction(title: "No", style: .cancel)
         let logOutButton = UIAlertAction(title: "Yes", style: .default, handler: { [weak self] action in
             self?.dismiss(animated: true, completion: nil)
@@ -56,6 +63,13 @@ class ProfileController: UIViewController {
         alert.addAction(cancelButton)
         alert.addAction(logOutButton)
         present(alert, animated: true)
+*/
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
     }
     
 }
+

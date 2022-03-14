@@ -47,7 +47,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsM-kg-yeT">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsM-kg-yeT">
                                                 <rect key="frame" x="16" y="733" width="382" height="31"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.94901960780000005" green="0.91372549020000005" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -136,12 +136,13 @@
                         <outlet property="emailTextField" destination="VzP-R9-cIb" id="z80-Oa-Xxb"/>
                         <outlet property="nameTextField" destination="K1B-sr-Wo7" id="ziI-PY-X4o"/>
                         <outlet property="saveButton" destination="tsM-kg-yeT" id="urE-lk-AOd"/>
+                        <outlet property="scrollView" destination="lUW-Jn-zjT" id="GjZ-ho-END"/>
                         <outlet property="surnameTextField" destination="S4y-ZX-4Z0" id="Lhq-Jr-SBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="260.86956521739131" y="149.33035714285714"/>
+            <point key="canvasLocation" x="301" y="84"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eUz-co-gdA">

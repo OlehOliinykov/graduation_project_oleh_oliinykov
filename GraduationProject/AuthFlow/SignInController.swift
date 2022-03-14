@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class SignInController: UIViewController {
 
@@ -14,6 +15,7 @@ class SignInController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,7 @@ class SignInController: UIViewController {
         signUpButton.layer.cornerRadius = 16
     }
     
-    @objc func textFieldsIsNotEmpty(sender: UITextField) {
+    @objc private func textFieldsIsNotEmpty(sender: UITextField) {
         
         sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
         
@@ -41,7 +43,24 @@ class SignInController: UIViewController {
         }
         
         signInButton.isEnabled = true
-    
     }
-
+    
+    func showModalAuth() {
+        let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
+        let newVc: UIViewController = storyboard.instantiateViewController(withIdentifier: "MainScreenController") as! UIViewController
+        present(newVc, animated: true, completion: nil)
+    }
+    
+    @IBAction func sighInTapped() {
+        let email = loginTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                self.showModalAuth()
+            }
+        }
+    }
 }

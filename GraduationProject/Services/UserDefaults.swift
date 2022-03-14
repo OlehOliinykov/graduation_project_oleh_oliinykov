@@ -15,15 +15,16 @@ class UserDefault {
     enum SettingKeys: String {
         case users
     }
+    
     let defaults = UserDefaults.standard
     let userKey = SettingKeys.users.rawValue
 
-    var users: [User] {
+    var users: [Users] {
         get {
             if let data = defaults.value(forKey: userKey) as? Data {
-                return try! PropertyListDecoder().decode([User].self, from: data)
+                return try! PropertyListDecoder().decode([Users].self, from: data)
             } else {
-                return [User]()
+                return [Users]()
             }
         }
         set {
@@ -34,8 +35,7 @@ class UserDefault {
     }
     
     func saveUser(firstName: String, familyName: String) {
-        let user = User (firstName: firstName, familyName: familyName)
+        let user = Users(firstName: firstName, familyName: familyName)
         users.insert(user, at: 0)
     }
-    
 }

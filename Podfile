@@ -9,5 +9,10 @@ target 'GraduationProject' do
     pod 'Alamofire'
     pod 'Kingfisher'
     pod 'Locksmith'
+    pod 'IQKeyboardManagerSwift'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Firestore'
 
 end

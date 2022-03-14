@@ -8,18 +8,28 @@
 import UIKit
 
 class AlbumsTableViewCell: UITableViewCell {
-
-    static let reuseIdentifier = "AlbumsTableViewCell"
     
     @IBOutlet weak var albumPhoto: UIImageView!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var trackValue: UILabel!
     
-    func setup(item: AlbumInfoSetting) {
-        albumPhoto.image = item.image
-        albumName.text = item.name
-        artistName.text = item.artist
-        trackValue.int = item.trackValue
+    func setup(item: Album) {
+        if let urlString = item.artworkUrl60 {
+            NetworkRequest.shared.requestData(urlString: urlString) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    let image = UIImage(data: data)
+                    self?.albumPhoto.image = image
+                case .failure(let error):
+                    print("No album photo")
+                }
+            }
+        } else {
+            albumPhoto.image = nil
+        }
+        albumName.text = item.collectionName
+        artistName.text = item.artistName
+        trackValue.text = "\(item.trackCount) tracks"
     }
 }

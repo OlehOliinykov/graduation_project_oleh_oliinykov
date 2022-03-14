@@ -17,14 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="koX-ny-fNy">
-                                <rect key="frame" x="0.0" y="139" width="375" height="673"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="ewE-eJ-2xH"/>
-                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="V0R-Qe-KNj"/>
-                                </connections>
-                            </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Asj-VQ-oTh">
                                 <rect key="frame" x="0.0" y="88" width="375" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -32,6 +24,14 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Y1M-KD-BUL"/>
                                 </connections>
                             </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="koX-ny-fNy">
+                                <rect key="frame" x="0.0" y="139" width="375" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="C83-99-azh"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="V0R-Qe-KNj"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -45,6 +45,7 @@
                             <constraint firstItem="Asj-VQ-oTh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aKW-VD-FzF"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Albums" image="magazine" catalog="system" id="IFS-bE-9R8"/>
                     <navigationItem key="navigationItem" title="Albums" id="iN0-IP-pl4">
                         <barButtonItem key="rightBarButtonItem" title="Profile" id="Cju-J9-gPB">
                             <imageReference key="image" image="brain.head.profile" catalog="system" symbolScale="default" renderingMode="hierarchical-single">
@@ -54,9 +55,6 @@
                                     <color systemColor="tertiaryLabelColor"/>
                                 </hierarchicalColors>
                             </imageReference>
-                            <connections>
-                                <segue destination="h7w-VB-5K9" kind="show" id="egG-Sx-EzB"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -66,17 +64,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="16.800000000000001" y="93.842364532019715"/>
+            <point key="canvasLocation" x="3222" y="-219"/>
         </scene>
         <!--Profile-->
-        <scene sceneID="TJs-Rs-fTP">
+        <scene sceneID="f0t-v4-oeM">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="h7w-VB-5K9" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="sC3-H7-4Vm"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="jkj-gG-5Cf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="lVH-WZ-GKu"/>
+                    <navigationItem key="navigationItem" id="eWb-ft-tBB"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="COR-8D-wEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dJ9-0I-tel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="722" y="94"/>
+            <point key="canvasLocation" x="2562" y="134"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ny8-ey-C1L">
+            <objects>
+                <tabBarController storyboardIdentifier="MainScreenController" modalPresentationStyle="fullScreen" id="vKh-PE-1Z5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fuU-xe-aE9"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iWk-QJ-ecg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="jkj-gG-5Cf" kind="relationship" relationship="viewControllers" id="3Fn-JE-2yM"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="viewControllers" id="2DP-34-Ick"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5cI-Ls-p2T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1356" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eQR-wp-RUi">
@@ -87,16 +108,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="GHh-GK-t65"/>
+                        <segue destination="vKh-PE-1Z5" kind="relationship" relationship="rootViewController" id="5jB-Sq-lj1"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsK-xB-7JD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1186" y="94"/>
+            <point key="canvasLocation" x="410" y="94"/>
         </scene>
     </scenes>
     <resources>
         <image name="brain.head.profile" catalog="system" width="114" height="128"/>
+        <image name="magazine" catalog="system" width="113" height="128"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
