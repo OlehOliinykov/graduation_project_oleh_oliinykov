@@ -22,7 +22,7 @@ class AlbumsTableViewCell: UITableViewCell {
                     let image = UIImage(data: data)
                     self?.albumPhoto.image = image
                 case .failure(let error):
-                    print("No album photo")
+                    print("No album photo: \(error)")
                 }
             }
         } else {

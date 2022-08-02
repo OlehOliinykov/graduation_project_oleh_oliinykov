@@ -8,7 +8,6 @@
 import UIKit
 
 class SongCollectionViewCell: UICollectionViewCell {
-
     
     @IBOutlet weak var songStackView: UIStackView!
     @IBOutlet weak var trackName: UILabel!

@@ -10,7 +10,6 @@ import UIKit
 
 class DetailScreen: UIViewController {
     
-    
     @IBOutlet weak var albumLogo: UIImageView!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var artistName: UILabel!
@@ -23,14 +22,22 @@ class DetailScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionViewSettings()
+        
         let nib = UINib(nibName: String(describing: "SongCollectionViewCell"), bundle: nil)
         self.SongsCollectionViewCell.register(nib, forCellWithReuseIdentifier: "SongCollectionViewCell")
+        
         fetchSong(album: album)
         setModel()
         
         guard let url = album?.artworkUrl60 else { return }
         
         setImage(urlString: url)
+    }
+    
+    func setupCollectionViewSettings() {
+        SongsCollectionViewCell.dataSource = self
+        SongsCollectionViewCell.delegate = self
     }
     
     private func setModel() {
@@ -43,19 +50,17 @@ class DetailScreen: UIViewController {
     }
     
     private func setDataFormat(date: String) -> String {
-        
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy' - 'MM' - 'dd'T'HH' : 'mm' : 'ssZZZ"
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
         guard let backendData = dateFormatter.date(from: date) else { return "" }
         
         let formatDate = DateFormatter()
-        formatDate.dateFormat = "dd - MM - yyyy"
+        formatDate.dateFormat = "dd-MM-yyyy"
         let date = formatDate.string(from: backendData)
         return date
     }
     
     private func setImage(urlString: String?) {
-       
         if let url = urlString {
             NetworkRequest.shared.requestData(urlString: url) { [weak self] result in
                 switch result {
@@ -63,7 +68,7 @@ class DetailScreen: UIViewController {
                     let image = UIImage(data: data)
                     self?.albumLogo.image = image
                 case .failure(let error):
-                    print("No album photo")
+                    print("No album photo: \(error)")
                 }
             }
         } else {
@@ -99,5 +104,11 @@ extension DetailScreen: UICollectionViewDelegate, UICollectionViewDataSource {
         let song = song[indexPath.row].trackName
         cell.trackName.text = song
         return cell
+    }
+}
+
+extension DetailScreen: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: SongsCollectionViewCell.bounds.size.width - 4, height: 37)
     }
 }

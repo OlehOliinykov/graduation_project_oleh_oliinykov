@@ -7,14 +7,9 @@
 
 import Foundation
 
-
 class UserDefault {
     
     static let shared = UserDefault()
-    
-    enum SettingKeys: String {
-        case users
-    }
     
     let defaults = UserDefaults.standard
     let userKey = SettingKeys.users.rawValue
@@ -32,6 +27,10 @@ class UserDefault {
                 defaults.set(data, forKey: userKey)
             }
         }
+    }
+    
+    enum SettingKeys: String {
+        case users
     }
     
     func saveUser(firstName: String, familyName: String) {

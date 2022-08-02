@@ -9,7 +9,6 @@ import UIKit
 
 class AuthController: UIViewController {
 
-    
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var topSignInConstraint: NSLayoutConstraint!

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class SignInController: UIViewController {
 
@@ -16,12 +17,24 @@ class SignInController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+ 
+    @IBAction func sighInTapped() {
+        let email = loginTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print(error)
+            } else {
+                self.showModalAuth()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
-        loginTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        addTarget()
     }
 
     private func style() {
@@ -29,6 +42,11 @@ class SignInController: UIViewController {
         passwordTextField.layer.cornerRadius = 16
         signInButton.layer.cornerRadius = 16
         signUpButton.layer.cornerRadius = 16
+    }
+    
+    func addTarget() {
+        loginTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldsIsNotEmpty), for: .editingChanged)
     }
     
     @objc private func textFieldsIsNotEmpty(sender: UITextField) {
@@ -46,21 +64,9 @@ class SignInController: UIViewController {
     }
     
     func showModalAuth() {
-        let storyboard = UIStoryboard(name: "MainScreen", bundle: nil)
-        let newVc: UIViewController = storyboard.instantiateViewController(withIdentifier: "MainScreenController") as! UIViewController
+        let storyboard = UIStoryboard(name: "TabBar", bundle: nil)
+        let newVc: UIViewController = storyboard.instantiateViewController(withIdentifier: "TabBar") 
         present(newVc, animated: true, completion: nil)
     }
     
-    @IBAction func sighInTapped() {
-        let email = loginTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print(error)
-            } else {
-                self.showModalAuth()
-            }
-        }
-    }
 }
