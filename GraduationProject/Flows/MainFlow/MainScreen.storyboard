@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qzp-Vo-6j1">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="CHi-qf-atq">
+            <objects>
+                <navigationController id="qzp-Vo-6j1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="upX-1M-fse">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="nTc-Za-aN0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1fs-HR-hsG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2236" y="-219"/>
+        </scene>
+        <!--Albums-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="MainScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="MainScreenController" customModule="GraduationProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Asj-VQ-oTh">
+                                <rect key="frame" x="0.0" y="88" width="375" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Y1M-KD-BUL"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="koX-ny-fNy">
+                                <rect key="frame" x="0.0" y="139" width="375" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="C83-99-azh"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="V0R-Qe-KNj"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="koX-ny-fNy" secondAttribute="bottom" id="HGZ-xo-KaF"/>
+                            <constraint firstItem="koX-ny-fNy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="HrT-Xv-TnT"/>
+                            <constraint firstItem="Asj-VQ-oTh" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="IbT-3R-kwa"/>
+                            <constraint firstItem="koX-ny-fNy" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="OdK-Yj-vEZ"/>
+                            <constraint firstItem="koX-ny-fNy" firstAttribute="top" secondItem="Asj-VQ-oTh" secondAttribute="bottom" id="UfQ-7D-EWo"/>
+                            <constraint firstItem="Asj-VQ-oTh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="XY4-Jw-mcx"/>
+                            <constraint firstItem="Asj-VQ-oTh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aKW-VD-FzF"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Albums" image="magazine" catalog="system" id="IFS-bE-9R8"/>
+                    <navigationItem key="navigationItem" title="Albums" id="iN0-IP-pl4"/>
+                    <connections>
+                        <outlet property="searchController" destination="Asj-VQ-oTh" id="e6C-Dk-SWo"/>
+                        <outlet property="tableView" destination="koX-ny-fNy" id="L1z-ng-1l8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3222" y="-219"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magazine" catalog="system" width="113" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
